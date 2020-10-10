@@ -3,7 +3,8 @@ Hcount=0
 Tcount=0
 i=1
 
-
+function tie()
+{
 while [ $Hcount -le 21 ] | [ $Tcount -le 21 ]
 do
 	a=$(expr $RANDOM % 10)
@@ -29,8 +30,11 @@ do
         break
         fi
 done
+}
 if [ $Hcount -eq $Tcount ]
 then
+tie $1
+
 echo " tie "
 else
 echo "heads won $Hcount times & tails won $Tcount times"
