@@ -1,8 +1,8 @@
 #! /bin/bash -x
+
 Hcount=0
 Tcount=0
 i=1
-
 function tie()
 {
 while [ $Hcount -le 21 ] | [ $Tcount -le 21 ]
@@ -19,33 +19,40 @@ do
       	Tcount=$( expr $Tcount + 1 )
       fi
          i=$( expr $i + 1 )
-	if [ $Hcount -eq 11 ]
-        then
-                echo "======>head won 21 times"
-        break
 
-        elif [ $Tcount -eq 21 ]
-        then
-        echo "=====>Tail won 21 times"
-        break
-        fi
+	if [ $Hcount -eq 21 ]
+   then
+      echo "======>head won 21 times"
+   break
+
+   elif [ $Tcount -eq 21 ]
+   then
+      echo "=====>Tail won 21 times"
+   break
+   fi
 done
+
+echo "Heads won $Hcount times and Tail won $Tcount times"
 }
+
 if [ $Hcount -eq $Tcount ]
 then
-tie $1
+	echo "game start or tie"
 
-echo " tie "
-else
-echo "heads won $Hcount times & tails won $Tcount times"
+	while [ `expr $Hcount - $Tcount` -lt 3 ] | [ `expr $Tcount - $Hcount` -lt 3 ]
+	do
+		tie $1
+	break
+	done
 fi
+
 if [ $Hcount -gt $Tcount ]
 then
-w=$( expr $Hcount - $Tcount )
-echo " heads won by $w times "
+	w=$( expr $Hcount - $Tcount )
+	echo " heads won by $w times more than tails "
 else
-x=$( expr $Tcount - $Hcount )
-echo " Tails won by $x times"
+	x=$( expr $Tcount - $Hcount )
+	echo " Tails won by $x times more than Heads "
 fi
 
 
