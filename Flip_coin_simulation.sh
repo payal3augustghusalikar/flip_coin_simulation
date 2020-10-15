@@ -22,12 +22,12 @@ do
 
 	if [ $Hcount -eq 21 ]
    then
-      echo "======>head won 21 times"
+      echo "head won 21 times"
    break
 
    elif [ $Tcount -eq 21 ]
    then
-      echo "=====>Tail won 21 times"
+      echo "Tail won 21 times"
    break
    fi
 done
